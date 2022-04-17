@@ -1,0 +1,15 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://repo.spring.io/milestone' }
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'ecom1'
+include 'customer'
+include 'account'
+
+
+
+
+
+
