@@ -20,13 +20,13 @@ public class AccountController {
         this.accountAppService = accountAppService;
     }
 
-    @PostMapping("/accounts/{customerId}")
-    public AccountResource create(@RequestBody AccountRequest request, @PathVariable String customerId) {
+    @PostMapping("/accounts")
+    public AccountResource create(@RequestBody AccountRequest request) {
         System.out.println("request = " + request);
 
         Account account = accountAppService.createAccount(
                 new Account(new Address(request.getAddressRequest().getCity()),
-                        new CustomerId(UUID.fromString(customerId))));
+                        new CustomerId(UUID.fromString(request.getCustomerId()))));
 
         return AccountResource.from(account);
     }
