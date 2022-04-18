@@ -19,3 +19,10 @@ curl --location --request POST 'http://localhost:8083/accounts' \
 }'
 
 
+curl --location --request PUT 'http://localhost:8083/customers/ce3e3cdb-5650-421d-8748-b390508beb6c/address' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"city": "mumbai"
+}'
+
+
