@@ -5,7 +5,7 @@ import com.ddd_bootcamp.domain.Customer;
 import java.util.UUID;
 
 public class CustomerResource {
-    private UUID customerId;
+    private String customerId;
     private AddressData addressData;
 
     public CustomerResource() {
@@ -13,17 +13,17 @@ public class CustomerResource {
 
     public static CustomerResource from(Customer customer) {
         CustomerResource customerResource = new CustomerResource();
-        customerResource.setCustomerId(customer.getCustomerId());
+        customerResource.setCustomerId(customer.getCustomerIdAsString());
 
         customerResource.setAddressData(AddressData.from(customer.getAddress()));
         return customerResource;
     }
 
-    public UUID getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(UUID customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

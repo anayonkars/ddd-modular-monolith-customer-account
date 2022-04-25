@@ -1,6 +1,7 @@
 package com.ddd_bootcamp.threetier.applicationservice;
 
 import com.ddd_bootcamp.domain.Account;
+import com.ddd_bootcamp.domain.AccountId;
 import com.ddd_bootcamp.domain.Address;
 import com.ddd_bootcamp.threetier.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class AccountAppService {
 
     //@Transactional
     public Account updateAddress(UUID accountId, Address address) {
-        Account account = accountRepository.find(accountId);
+        Account account = accountRepository.find(new AccountId(accountId));
         account.updateAddress(address);
         return accountRepository.save(account);
     }

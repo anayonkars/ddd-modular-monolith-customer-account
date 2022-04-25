@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class AccountResource {
-    private UUID accountId;
+    private String accountId;
     private AddressData addressData;
 
     public AccountResource() {
@@ -15,17 +15,17 @@ public class AccountResource {
 
     public static AccountResource from(Account account) {
         AccountResource accountResource = new AccountResource();
-        accountResource.setAccountId(account.getAccountId().getAccountIdUUID());
+        accountResource.setAccountId(account.getAccountIdAsString());
 
         accountResource.setAddressData(AddressData.from(account.getAddress()));
         return accountResource;
     }
 
-    public UUID getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(UUID accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 

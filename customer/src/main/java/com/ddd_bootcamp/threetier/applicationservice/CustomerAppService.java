@@ -3,6 +3,7 @@ package com.ddd_bootcamp.threetier.applicationservice;
 import com.ddd_bootcamp.domain.AccountId;
 import com.ddd_bootcamp.domain.Address;
 import com.ddd_bootcamp.domain.Customer;
+import com.ddd_bootcamp.domain.CustomerId;
 import com.ddd_bootcamp.threetier.controller.AccountController;
 import com.ddd_bootcamp.threetier.controller.viewModel.AddressRequest;
 import com.ddd_bootcamp.threetier.repository.CustomerRepository;
@@ -35,7 +36,7 @@ public class CustomerAppService {
 
     //@Transactional
     public Customer updateAddress(UUID customerId, Address address) {
-        Customer customer = customerRepository.find(customerId);
+        Customer customer = customerRepository.find(new CustomerId(customerId));
         customer.updateAddress(address);
         Customer savedCustomer = customerRepository.save(customer);
 
@@ -52,7 +53,7 @@ public class CustomerAppService {
     }
 
     public Customer addAccount(UUID customerId, String accountId) {
-        Customer customer = customerRepository.find(customerId);
+        Customer customer = customerRepository.find(new CustomerId(customerId));
         customer.add(new AccountId(UUID.fromString(accountId)));
         customerRepository.save(customer);
         return customer;

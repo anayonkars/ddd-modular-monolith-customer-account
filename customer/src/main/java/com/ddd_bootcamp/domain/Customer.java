@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Customer {
-    private UUID customerId;
+public class Customer implements Aggregate {
+    private CustomerId customerId;
     private Address address;
     private List<AccountId> accountIds = new ArrayList<>();
 
     public Customer(Address address) {
-        this.customerId = UUID.randomUUID();
+        this.customerId = new CustomerId(UUID.randomUUID());
         this.address = address;
     }
 
@@ -22,8 +22,12 @@ public class Customer {
         accountIds.add(accountId);
     }
 
-    public UUID getCustomerId() {
+    public CustomerId getCustomerId() {
         return customerId;
+    }
+
+    public String getCustomerIdAsString() {
+        return customerId.getCustomerId().toString();
     }
 
     public Address getAddress() {

@@ -15,6 +15,21 @@ public class CustomerId {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomerId that = (CustomerId) o;
+
+        return customerId.equals(that.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return customerId.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "CustomerId{" +
                 "customerId=" + customerId +

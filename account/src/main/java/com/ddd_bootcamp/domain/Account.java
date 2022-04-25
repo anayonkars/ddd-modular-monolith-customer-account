@@ -3,7 +3,7 @@ package com.ddd_bootcamp.domain;
 import java.util.UUID;
 
 //Account Aggregate
-public class Account {
+public class Account implements Aggregate {
 
     private final CustomerId customerId;
     private AccountId accountId;

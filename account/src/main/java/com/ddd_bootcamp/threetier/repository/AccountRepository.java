@@ -1,6 +1,7 @@
 package com.ddd_bootcamp.threetier.repository;
 
 import com.ddd_bootcamp.domain.Account;
+import com.ddd_bootcamp.domain.AccountId;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -13,15 +14,15 @@ import java.util.UUID;
 @Repository
 public class AccountRepository {
 
-    private Map<UUID, Account> accountMap = new HashMap<>();
+    private Map<AccountId, Account> accountMap = new HashMap<>();
 
     public Account save(Account account) {
         System.out.println("in Repository account = " + account);
-        accountMap.put(account.getAccountId().getAccountIdUUID(), account);
+        accountMap.put(account.getAccountId(), account);
         return account;
     }
 
-    public Account find(UUID accountId) {
+    public Account find(AccountId accountId) {
         return accountMap.get(accountId);
     }
 }
